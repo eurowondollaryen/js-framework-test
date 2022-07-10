@@ -9,21 +9,29 @@
 <body>
     <div id="app">
         <app-header v-bind:propsdata="message"></app-header>
+        <app-content v-bind:propsdata="num"></app-content>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         var appHeader = {
-            template: '<h1>header</h1>',
+            template: '<h1>Hello, {{ propsdata }}</h1>',
             props: ['propsdata']
+        };
+
+        var appContent = {
+            template: '<div>Content is: {{ propsdata }}</div>',
+            props: ['propsdata']//COMPONENT별로 동일 props명을 사용할 수 있다.
         };
 
         new Vue({
             el: '#app',
             components: {
-                'app-header': appHeader
+                'app-header': appHeader,
+                'app-content': appContent
             },
             data: {
-                message: 'hi'
+                message: 'seho',//상위컴포넌트의 message. 수정하면 propsdata가 변경된다.(Reactivity)
+                num: 10
             }
         })
     </script>
