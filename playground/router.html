@@ -8,7 +8,11 @@
 </head>
 <body>
     <div id="app">
-
+        <div>
+            <router-link to="/login">Login</router-link>
+            <router-link to="/main">Main</router-link>
+        </div>
+        <router-view></router-view>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
@@ -22,24 +26,27 @@
         };
 
         var router = new VueRouter({
+            mode: 'history',//url에 #이 없어짐.
             // 페이지의 라우팅 정보
             routes: [
                 {
                     // 페이지의 url 이름
                     path: '/login',
+                    name: 'login',
                     // 해당 url에서 표시될 컴포넌트
-                    component: LoginComponent
+                    component: LoginComponent//router 페이지 마다 뿌려줄 component는 무조건 1개다.
                 },
                 {
                     path: '/main',
+                    name: 'main',
                     component: MainComponent
                 }
             ]
         });
-
+//route guard : https://joshua1988.github.io/web-development/vuejs/vue-router-navigation-guards/
         new Vue({
             el: '#app',
-            router: router
+            router: router//vue 인스턴스의 component는 여러 개다.
         });
     </script>
 </body>
