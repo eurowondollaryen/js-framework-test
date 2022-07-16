@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{num}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                num: 10
+            },
+            computed: {
+                doubleNum: function() {//실시간으로 처리되어야 하는 로직에 주로 사용(주로 validation, test에 적합)
+                    return this.num * 2;
+                }
+            },
+            watch: {//매번 실행되는게 부담스러운 로직에 주로 사용
+                num: function(newValue, oldValue) {
+                    this.fetchUserByNumber(newValue);
+                }
+            },
+            methods: {
+                fetchUserByNumber: function(num) {
+                    console.log(num);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
