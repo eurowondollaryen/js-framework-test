@@ -9,16 +9,27 @@
       <input id="password" type="password" v-model="password">
     </div>
     <button type="submit">login</button>
+    <keep-alive>
+      <component v-bind:is="currentTabComponent"></component>
+    </keep-alive>
   </form>
 </template>
 
 <script>
 import axios from 'axios';
+import TabOne from './components/TabOne.vue';
+import TabTwo from './components/TabTwo.vue';
+
 export default {
+  components: {
+    TabOne,
+    TabTwo
+  },
   data: function() {
     return {
       username: '',
-      password: ''
+      password: '',
+      currentTabComponent: "TabTwo"
     };
   },
   methods: {
