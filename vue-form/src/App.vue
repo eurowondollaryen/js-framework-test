@@ -9,11 +9,14 @@
       <input id="password" type="password" v-model="password">
     </div>
     <button type="submit">login</button>
-    <button v-on:click="switchTab(1)">tab1</button>
+  </form>
+  <div>
+    <button v-on:click="switchTab('TabOne')">tab1</button>
+    <button v-on:click="switchTab('TabTwo')">tab2</button>
     <keep-alive>
       <component v-bind:is="currentTabComponent"></component>
     </keep-alive>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -52,8 +55,8 @@ export default {
         console.log(error);
       });
     },
-    switchTab: function(num) {
-      console.log(num);
+    switchTab: function(tabName) {
+      this.currentTabComponent = tabName;
     }
   }
 }
