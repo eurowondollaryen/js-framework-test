@@ -9,6 +9,7 @@
       <input id="password" type="password" v-model="password">
     </div>
     <button type="submit">login</button>
+    <button v-on:click="switchTab(1)">tab1</button>
     <keep-alive>
       <component v-bind:is="currentTabComponent"></component>
     </keep-alive>
@@ -50,6 +51,9 @@ export default {
       .catch(function(error) {
         console.log(error);
       });
+    },
+    switchTab: function(num) {
+      console.log(num);
     }
   }
 }
