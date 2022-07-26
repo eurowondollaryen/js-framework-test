@@ -4,10 +4,19 @@
 
 <script>
 export default {
+  name: 'TabTwo',
+  data: function() {
+    return {
 
+    };
+  },
+  methods: {
+    draw: function() {
+      
+    }
+  }
 }
 </script>
 
 <style>
-
 </style>
