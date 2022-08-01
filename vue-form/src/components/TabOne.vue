@@ -3,8 +3,17 @@
 </template>
 
 <script>
-export default {
+import { AgGridVue } from "ag-grid-vue3";
 
+export default {
+  components: {
+    AgGridVue
+  },
+  methods: {
+    showGrid: function() {
+      console.log(this.AgGridVue);
+    }
+  }
 }
 </script>
 
