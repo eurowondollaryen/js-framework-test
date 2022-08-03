@@ -19,7 +19,9 @@ export default {
   data: function() {
     return {
       columnDefs: [
-        { headerName: "Make", field: "make" },
+        { headerName: "Make"
+          , field: "make"
+          , editable: true },
         { headerName: "Model", field: "model" },
         { headerName: "Price", field: "price" }
       ],
