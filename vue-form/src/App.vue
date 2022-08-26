@@ -16,6 +16,11 @@
     <keep-alive>
       <component v-bind:is="currentTabComponent"></component>
     </keep-alive>
+    <div>
+      <div v-for="item in loopArray" v-bind:key="item">
+        {{item}}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,7 +38,8 @@ export default {
     return {
       username: '',
       password: '',
-      currentTabComponent: "TabTwo"
+      currentTabComponent: "TabTwo",
+      loopArray: [1, 2, 3]
     };
   },
   methods: {
