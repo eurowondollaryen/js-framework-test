@@ -11,6 +11,7 @@
     <button type="submit">login</button>
   </form>
   <div>
+    <!-- tab menu test -->
     <button v-on:click="switchTab('TabOne')">tab1</button>
     <button v-on:click="switchTab('TabTwo')">tab2</button>
     <keep-alive>
@@ -21,6 +22,8 @@
         {{item}}
       </div>
     </div>
+    <button v-on:click="renderCanvas('hello')">canvas render</button>
+    <div id="hello">hello</div>
   </div>
 </template>
 
@@ -28,6 +31,7 @@
 import axios from 'axios';
 import TabOne from './components/TabOne.vue';
 import TabTwo from './components/TabTwo.vue';
+import html2canvas from 'html2canvas';
 
 export default {
   components: {
@@ -63,6 +67,11 @@ export default {
     },
     switchTab: function(tabName) {
       this.currentTabComponent = tabName;
+    },
+    renderCanvas: function(elementId) {
+      html2canvas(document.getElementById(elementId)).then(function(canvas) {
+        document.getElementById(elementId).appendChild(canvas);
+      });
     }
   }
 }
