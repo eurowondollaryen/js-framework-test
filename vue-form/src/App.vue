@@ -1,29 +1,42 @@
 <template>
-  <form v-on:submit.prevent="submitForm">
-    <div>
-      <label for="username">id: </label>
-      <input id="username" type="text" v-model="username">
-    </div>
-    <div>
-      <label for="password">pw: </label>
-      <input id="password" type="password" v-model="password">
-    </div>
-    <button type="submit">login</button>
-  </form>
   <div>
+    <h3>1. form submit test</h3>
+    <form v-on:submit.prevent="submitForm">
+      <div>
+        <label for="username">id: </label>
+        <input id="username" type="text" v-model="username">
+      </div>
+      <div>
+        <label for="password">pw: </label>
+        <input id="password" type="password" v-model="password">
+      </div>
+      <button type="submit">login</button>
+    </form>
+  </div>
+  <div>
+    <h3>2. tab menu test</h3>
     <!-- tab menu test -->
     <button v-on:click="switchTab('TabOne')">tab1</button>
     <button v-on:click="switchTab('TabTwo')">tab2</button>
     <keep-alive>
       <component v-bind:is="currentTabComponent"></component>
     </keep-alive>
+  </div>
+  <div>
+    <h3>3. v-for test</h3>
     <div>
       <div v-for="item in loopArray" v-bind:key="item">
         {{item}}
       </div>
     </div>
+  </div>
+  <div>
+    <h3>4. HTML to canvas render test</h3>
     <button v-on:click="renderCanvas('hello')">canvas render</button>
     <div id="hello">hello</div>
+  </div>
+  <div>
+    <h3>5. tree Menu test</h3>
   </div>
 </template>
 
