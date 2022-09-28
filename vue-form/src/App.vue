@@ -37,6 +37,11 @@
   </div>
   <div>
     <h3>5. tree Menu test</h3>
+    <div>
+      <div v-for="item in menuArray" v-bind:key="item">
+        {{item.MENU_NAME}}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -56,7 +61,9 @@ export default {
       username: '',
       password: '',
       currentTabComponent: "TabTwo",
-      loopArray: [1, 2, 3]
+      loopArray: [1, 2, 3],
+      menuArray: [{"UPPR_MENU" : "A", "MENU_IDXX" : "A1", "MENU_NAME" : "A1번"}
+      , {"UPPR_MENU" : "A", "MENU_IDXX" : "A2", "MENU_NAME" : "A2번"}]
     };
   },
   methods: {
