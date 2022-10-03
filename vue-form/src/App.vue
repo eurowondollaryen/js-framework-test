@@ -41,6 +41,7 @@
       <div v-for="item in menuArray" v-bind:key="item">
         {{item.MENU_NAME}}
       </div>
+      <button @click="deleteMenu">delete menu</button>
     </div>
   </div>
 </template>
@@ -134,6 +135,9 @@ export default {
       html2canvas(document.getElementById(elementId)).then(function(canvas) {
         document.getElementById(elementId).appendChild(canvas);
       });
+    },
+    deleteMenu: function() {
+      this.menuArray[0]["MENU_NAME"] = "HELLO";//v-for 대상 데이터 수정 테스트
     }
   }
 }
