@@ -62,8 +62,50 @@ export default {
       password: '',
       currentTabComponent: "TabTwo",
       loopArray: [1, 2, 3],
-      menuArray: [{"UPPR_MENU" : "A", "MENU_IDXX" : "A1", "MENU_NAME" : "A1번"}
-      , {"UPPR_MENU" : "A", "MENU_IDXX" : "A2", "MENU_NAME" : "A2번"}]
+      menuArray: [
+    {
+        "SORT_ORDR": 1,
+        "DEVC_YSNO": "1",
+        "PROG_IDXX": "COMA0001",
+        "MNUT_YSNO": "1",
+        "UPME_IDXX": "MCOMA",
+        "SYST_CODE": "COM",
+        "MENU_NAME": "프로그램관리",
+        "MENU_IDXX": "MCOMA0001",
+        "USEX_YSNO": "1"
+    },
+    {
+        "SORT_ORDR": 2,
+        "DEVC_YSNO": "1",
+        "PROG_IDXX": "COMA0002",
+        "MNUT_YSNO": "1",
+        "UPME_IDXX": "MCOMA",
+        "SYST_CODE": "COM",
+        "MENU_NAME": "메뉴구조관리",
+        "MENU_IDXX": "MCOMA0002",
+        "USEX_YSNO": "1"
+    },
+    {
+        "SORT_ORDR": 10,
+        "DEVC_YSNO": "1",
+        "MNUT_YSNO": "1",
+        "UPME_IDXX": "MCOM",
+        "SYST_CODE": "COM",
+        "MENU_NAME": "시스템관리",
+        "MENU_IDXX": "MCOMA",
+        "USEX_YSNO": "1"
+    },
+    {
+        "SORT_ORDR": 1000,
+        "DEVC_YSNO": "1",
+        "MNUT_YSNO": "1",
+        "UPME_IDXX": "ROOT",
+        "SYST_CODE": "COM",
+        "MENU_NAME": "공통관리",
+        "MENU_IDXX": "MCOM",
+        "USEX_YSNO": "1"
+    }
+]
     };
   },
   methods: {
