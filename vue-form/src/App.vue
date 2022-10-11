@@ -44,6 +44,12 @@
       <button @click="deleteMenu">delete menu</button>
     </div>
   </div>
+  <div>
+    <h3>6. dynamic font size test</h3>
+    <div>
+      <div class="dynamic-text" v-bind:class="dynamicStyleText">{{dynamicText}}</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -59,6 +65,8 @@ export default {
   },
   data: function() {
     return {
+      dynamicText: "ABCDEFGHIJKLMNOP123456",
+      dynamicStyleText: "dynamic-font-md",
       username: '',
       password: '',
       currentTabComponent: "TabTwo",
@@ -143,6 +151,19 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.dynamic-text {
+  border: 1px solid;
+  width: 200px;
+  height: 25px;
+}
+.dynamic-font-sm {
+  font-size: 10px;
+}
+.dynamic-font-md {
+  font-size: 15px;
+}
+.dynamic-font-lg {
+  font-size: 20px;
+}
 </style>
