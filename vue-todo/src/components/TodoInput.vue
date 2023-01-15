@@ -17,9 +17,7 @@ export default {
   methods: {
     addTodo: function() {
       if(this.newTodoItem !== "") {
-        let obj = {completed: false, item: this.newTodoItem};
-        //localstorage는 object 저장을 지원하지 않기 때문에 string화를 한다.
-        localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+        this.$emit("addTodo", this.newTodoItem);
         this.clearInput();
       }
     },

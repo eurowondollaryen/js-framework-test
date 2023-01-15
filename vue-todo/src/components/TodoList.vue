@@ -15,31 +15,20 @@
 
 <script>
 export default {
+  props: {
+    todoItems: Array
+  },
   data: function() {
     return {
-      todoItems: []
+      
     };
   },
   methods: {
     removeTodo: function(todoItem, index) {
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index, 1);//javascript 기본 api, 특정 index에서 원하는 개수만큼 제거 가능
-      //slice: 기존배열을 제거하고 새로운 배열을 반환한다.
+      this.$emit("removeItem", todoItem, index);
     },
     toggleComplete: function(todoItem, index) {
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-      //localStorage의 데이터를 갱신하는 부분
-      localStorage.removeItem(todoItem.item)
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    }
-  },
-  created: function() {
-    if(localStorage.length > 0) {
-      for(let i = 0; i < localStorage.length; ++i) {
-        if(localStorage.key(i) !== "loglevel:webpack-dev-server") {
-          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-        }
-      }
+      this.$emit("toggleCompleteItem", todoItem, index);
     }
   }
 }

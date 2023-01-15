@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput></TodoInput>
-    <TodoList></TodoList>
-    <TodoFooter></TodoFooter>
+    <TodoInput v-on:addTodo="addOneItem"></TodoInput>
+    <TodoList v-bind:todoItems="todoItems"
+              v-on:removeItem="removeOneItem"
+              v-on:toggleCompleteItem="toggleCompleteOneItem"></TodoList>
+    <TodoFooter v-on:clearAll="clearAllItems"></TodoFooter>
   </div>
 </template>
 
@@ -20,6 +22,44 @@ export default {
     "TodoInput": TodoInput,//권고방식: todo-header
     "TodoList": TodoList,
     "TodoFooter": TodoFooter
+  },
+  data: function() {
+    return {
+      todoItems: []
+    }
+  },
+  created: function() {
+    if(localStorage.length > 0) {
+      for(let i = 0; i < localStorage.length; ++i) {
+        if(localStorage.key(i) !== "loglevel:webpack-dev-server") {
+          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        }
+      }
+    }
+  },
+  methods: {
+    addOneItem: function(newTodoItem) {
+      let obj = {completed: false, item: newTodoItem};
+      //localstorage는 object 저장을 지원하지 않기 때문에 string화를 한다.
+      localStorage.setItem(newTodoItem, JSON.stringify(obj));
+      this.todoItems.push(obj);
+    },
+    removeOneItem: function(todoItem, index) {
+      localStorage.removeItem(todoItem.item);
+      this.todoItems.splice(index, 1);//javascript 기본 api, 특정 index에서 원하는 개수만큼 제거 가능
+      //slice: 기존배열을 제거하고 새로운 배열을 반환한다.
+    },
+    toggleCompleteOneItem: function(todoItem, index) {
+      //todoItem.completed = !todoItem.completed 안티 패턴(좋지 않은 패턴. event로 올려준 데이터를 직접 수정하는 방식)
+      this.todoItems[index].completed = !this.todoItems[index].completed;
+      //localStorage의 데이터를 갱신하는 부분
+      localStorage.removeItem(todoItem.item)
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    },
+    clearAllItems: function() {
+      localStorage.clear();
+      this.todoItems = [];
+    }
   }
 }
 </script>
