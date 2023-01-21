@@ -19,6 +19,9 @@ export default {
       if(this.newTodoItem !== "") {
         this.$emit("addTodo", this.newTodoItem);
         this.clearInput();
+      } else {
+        alert("todo 제목을 입력해 주세요.");
+        return false;
       }
     },
     clearInput: function() {
