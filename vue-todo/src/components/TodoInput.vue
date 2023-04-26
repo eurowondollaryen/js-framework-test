@@ -20,7 +20,8 @@ export default {
         this.$emit("addTodo", this.newTodoItem);
         this.clearInput();
       } else {
-        alert("입력값이 없습니다.");//x-template 사용 필요
+        alert("todo 제목을 입력해 주세요.");
+        return false;
       }
     },
     clearInput: function() {
