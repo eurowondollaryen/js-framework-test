@@ -4,14 +4,21 @@
     <span class="addContainer" @click="addTodo">
       <i class="fas fa-plus addBtn"></i>
     </span>
+    <button id="show-modal" @click="showModal = true">Show Modal</button>
+    <ModalCommon v-if="showModal" @close="showModal = false">
+      <h3>custom header</h3>
+      <!-- slot 속성 deprecated 임. -->
+    </ModalCommon>
   </div>
 </template>
 
 <script>
+import ModalCommon from './common/ModalCommon.vue';
 export default {
   data: function() {
     return {
-      newTodoItem: ""
+      newTodoItem: "",
+      showModal: false
     };
   },
   methods: {
@@ -27,6 +34,9 @@ export default {
     clearInput: function() {
       this.newTodoItem = "";
     }
+  },
+  components: {
+    ModalCommon
   }
 }
 </script>
