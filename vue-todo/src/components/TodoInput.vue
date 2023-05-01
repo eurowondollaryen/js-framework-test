@@ -4,10 +4,13 @@
     <span class="addContainer" @click="addTodo">
       <i class="fas fa-plus addBtn"></i>
     </span>
-    <button id="show-modal" @click="showModal = true">Show Modal</button>
     <ModalCommon v-if="showModal" @close="showModal = false">
-      <h3>custom header</h3>
       <!-- slot 속성 deprecated 임. -->
+      <template v-slot:header>
+        <div>
+          {{ headerValue }}
+        </div>
+      </template>
     </ModalCommon>
   </div>
 </template>
@@ -18,7 +21,8 @@ export default {
   data: function() {
     return {
       newTodoItem: "",
-      showModal: false
+      showModal: false,
+      headerValue: "cscs",
     };
   },
   methods: {
@@ -27,7 +31,7 @@ export default {
         this.$emit("addTodo", this.newTodoItem);
         this.clearInput();
       } else {
-        alert("todo 제목을 입력해 주세요.");
+        this.showModal = !this.showModal;
         return false;
       }
     },
