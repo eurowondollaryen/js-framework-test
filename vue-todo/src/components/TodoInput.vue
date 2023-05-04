@@ -6,10 +6,9 @@
     </span>
     <ModalCommon v-if="showModal" @close="showModal = false">
       <!-- slot 속성 deprecated 임. -->
+      <!-- slot의 역할: modal의 내용을 재정의한다. (header slot영역의 내용을 부모에서 재정의 -->
       <template v-slot:header>
-        <div>
-          {{ headerValue }}
-        </div>
+        {{ headerValue }}
       </template>
     </ModalCommon>
   </div>
@@ -22,7 +21,7 @@ export default {
     return {
       newTodoItem: "",
       showModal: false,
-      headerValue: "cscs",
+      headerValue: "경고!",
     };
   },
   methods: {
