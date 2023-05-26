@@ -32,7 +32,7 @@ export default {
     };
   },
   methods: {
-    addTodo: function() {
+    addTodo() {
       if(this.newTodoItem !== "") {
         this.$emit("addTodo", this.newTodoItem);
         this.clearInput();
@@ -41,7 +41,7 @@ export default {
         return false;
       }
     },
-    clearInput: function() {
+    clearInput() {
       this.newTodoItem = "";
     }
   },
