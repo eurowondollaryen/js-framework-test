@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition-group name="list" tag="ul">
-      <li v-for="(todoItem, index) in this.$store.state.todoItems" v-bind:key="todoItem" class="shadow">
+      <li v-for="(todoItem, index) in this.todoItems" v-bind:key="todoItem" class="shadow">
         <i class="checkBtn fas fa-check" v-bind:class="{checkBtnCompleted: todoItem.completed}"
         @click="toggleComplete(todoItem, index)"></i>
         <span v-bind:class="{textCompleted: todoItem.completed}">{{ todoItem.item }}</span>
@@ -14,10 +14,9 @@
 </template>
 
 <script>
+import { mapGetters }from 'vuex'
+
 export default {
-  props: {
-    todoItems: Array
-  },
   data: function() {
     return {
       
@@ -25,11 +24,14 @@ export default {
   },
   methods: {
     removeTodo(todoItem, index) {
-      this.$emit("removeItem", todoItem, index);
+      this.$store.commit("removeOneItem", {todoItem, index});
     },
     toggleComplete(todoItem, index) {
-      this.$emit("toggleCompleteItem", todoItem, index);
+      this.$store.commit("toggleCompleteOneItem", {todoItem, index});
     }
+  },
+  computed: {
+    ...mapGetters(['storedTodoItems'])
   }
 }
 </script>
