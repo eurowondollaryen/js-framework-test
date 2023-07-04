@@ -21,11 +21,21 @@ const storage = {
 const store = new Vuex.Store({
     state: {
         todoItems: storage.fetch(),
-        headerText: "TODO it!"
+        headerText: "TODO it!",
+        price: 100
     },
     getters: {
         storedTodoItems(state) {
             return state.todoItems;
+        },
+        originalPrice(state) {
+            return state.price;
+        },
+        doublePrice(state) {
+            return state.price * 2;
+        },
+        triplePrice(state) {
+            return state.price * 3;
         }
     },
     mutations: {
